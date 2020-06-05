@@ -1,8 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
-
 class Author(models.Model):
     full_name = models.TextField()
     birth_year = models.SmallIntegerField()
@@ -11,6 +9,10 @@ class Author(models.Model):
     
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        verbose_name = "Автор"
+        verbose_name_plural = "Авторы"    
 
 
 class Publisher(models.Model):
@@ -21,8 +23,8 @@ class Publisher(models.Model):
         return self.name 
 
     class Meta:
-        verbose_name = "Publisher"
-        verbose_name_plural = "Publishers"    
+        verbose_name = "Издатель"
+        verbose_name_plural = "Издатели"    
 
 
 class Book(models.Model):

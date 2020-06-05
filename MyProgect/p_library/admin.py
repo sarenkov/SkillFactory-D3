@@ -8,7 +8,7 @@ from p_library.models import Book, Author, Publisher
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_filter = ['year_release', 'copy_count']
-    list_display = ['title', 'author']
+    list_display = ['title', 'author', 'publisher']
     # fields = ('ISBN', 'title', 'description', 'year_release', 'author', 'price')
     exclude = ['price']
 
@@ -20,7 +20,7 @@ class BookAdmin(admin.ModelAdmin):
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_filter = ['birth_year', 'country']
-    list_display = ['full_name', 'country', 'birth_year']
+    list_display = ['full_name', 'country', 'birth_year', 'publisher']
     actions = ['ru_for_all']
 
     def ru_for_all(self, request, queryset):

@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 from django.template import loader
-from p_library.models import Book
+from p_library.models import Book, Publisher
 
 
 def books_list(request):
@@ -23,6 +23,14 @@ def index(request):
     }
 
     return HttpResponse(template.render(biblio_data, request))
+
+def publishers(request):
+    template = loader.get_template('publishers.html')
+    publishers = Publisher.objects.all()
+    data = {
+        'publishers': publishers
+    }
+    return HttpResponse(template.render(data, request))
 
 @csrf_protect
 def book_increment(request):
