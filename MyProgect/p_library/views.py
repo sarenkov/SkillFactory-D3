@@ -27,8 +27,10 @@ def index(request):
 def publishers(request):
     template = loader.get_template('publishers.html')
     publishers = Publisher.objects.all()
+    books = Book.objects.all()
     data = {
-        'publishers': publishers
+        'publishers': publishers,
+        'books' : books
     }
     return HttpResponse(template.render(data, request))
 
