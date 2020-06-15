@@ -14,7 +14,7 @@
   {% endfor %}
     {{book_formset.management_form}}
     {% for form in book_formset %}
-        {{ form.as_table }}
+        {{ form.as_ul }}
         <br>
   {% endfor %}
     <input type="submit" value="Сохранить"/>
