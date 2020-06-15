@@ -36,6 +36,7 @@ class Book(models.Model):
     price = models.FloatField(default=0.00)
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
     publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE)
+    friend = models.ForeignKey('Friend', on_delete=models.CASCADE, null=True, related_name='friends')
 
     def __str__(self):
         return self.title
@@ -44,5 +45,17 @@ class Book(models.Model):
         ordering = ['title']
         verbose_name = 'Книги'
         verbose_name_plural = 'Книги'
+
+
+class Friend(models.Model):
+    full_name = models.fields.CharField(max_length=100)
+
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        ordering = ['full_name']
+        verbose_name = 'Друг-читатель'
+        verbose_name_plural = 'Друзья-читатели'
 
 

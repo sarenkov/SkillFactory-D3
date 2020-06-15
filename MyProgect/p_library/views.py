@@ -4,8 +4,8 @@ from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 from django.template import loader
-from p_library.models import Book, Publisher, Author
-from p_library.forms import AuthorForm, BookForm
+from p_library.models import Book, Publisher, Author, Friend
+from p_library.forms import AuthorForm, BookForm, FriendForm
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 
@@ -129,3 +129,12 @@ def books_authors_create_many(request):
             'book_formset': book_formset,
         }
     )
+
+@csrf_protect
+def friends_list(request):
+    template = loader.get_template('friends_list.html')
+    friends_list = Friend.objects.all()
+    data = {
+        'friends_list': friends_list
+    }
+    return HttpResponse(template.render(data, request))

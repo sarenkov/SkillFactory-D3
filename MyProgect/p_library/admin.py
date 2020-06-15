@@ -1,8 +1,5 @@
 from django.contrib import admin
-from p_library.models import Book, Author, Publisher
-
-
-
+from p_library.models import Book, Author, Publisher, Friend
 
 
 @admin.register(Book)
@@ -12,10 +9,12 @@ class BookAdmin(admin.ModelAdmin):
     # fields = ('ISBN', 'title', 'description', 'year_release', 'author', 'price')
     exclude = ['price']
 
+
 @admin.register(Publisher)
 class BookAdmin(admin.ModelAdmin):
     list_filter = ['name', 'city']
-    list_display = ['name', 'city']    
+    list_display = ['name', 'city']
+
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
@@ -33,3 +32,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
     ru_for_all.short_description = 'Сделать всех русскими'
 
+
+@admin.register(Friend)
+class FriendAdmin(admin.ModelAdmin):
+    list_display = ['full_name']
