@@ -8,7 +8,7 @@ class Author(models.Model):
     publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.full_name
+        return '{} {}'.format(self.full_name, self.birth_year)
 
     class Meta:
         verbose_name = "Автор"
